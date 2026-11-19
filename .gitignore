@@ -1,0 +1,31 @@
+# Secrets — API keys live here, never commit
+.env
+.env.local
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.code-workspace
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Streamlit runtime
+.streamlit/
