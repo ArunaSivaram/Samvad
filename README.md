@@ -6,7 +6,8 @@ Built as a portfolio project to practice retrieval-augmented generation (RAG) en
 
 ## Demo
 
-![App screenshot](screenshot.png)
+Visit here for PRD and the demo of how this chat feature works - https://arunasivaram.github.io/Samvad/
+
 
 *(Replace this placeholder with a real screenshot of the running app.)*
 
