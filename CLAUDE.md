@@ -100,3 +100,24 @@ Single-file app in `web/src/App.tsx`. Notable pieces:
 - Prefer extending `retrieve()` / `_enrich()` over touching the index or re-embedding. The index is deliberately simple (701 flat vectors) and swapping the embedder is a conscious rebuild, not an incidental change.
 - Any change to prompts, embedder, or scoring should also update `eval_results.md` after re-running `python eval.py` — the honest-numbers posture is a feature of this project, not just documentation.
 - `_strip_dashes` and `_normalize_headings` are applied twice (sync answer + streaming). If you add a new post-processor, add it in both places.
+
+## Landing page / GitHub Pages
+
+`index.html` at the repo root is a **standalone product landing page** (no build step, inline CSS, inline SVG favicon as a data URL) that pitches Samvad as a platform. It's served via GitHub Pages at **https://arunasivaram.github.io/Samvad/** when Pages is enabled in repo settings (Source: Deploy from branch `main`, folder `/ (root)`). This file is intentionally self-contained so it works both locally (just open it) and on Pages with no build pipeline.
+
+Demo-video convention: the "See it in action" section uses a `<video>` with sources tried in order: `demo.mp4` → `demo.webm` → `demo.gif` fallback image, all expected at the repo root. Dropping any one of these files in and pushing is enough to make the loop appear. Optional `demo-poster.png` acts as the still frame while loading.
+
+## Git state
+
+Remote `origin` → `https://github.com/ArunaSivaram/Samvad.git`. Default branch is **`main`** (renamed from the git default `master`). Two commits live on `main`: the initial commit of the whole working app, then the landing-page commit. `web/package-lock.json` and the built FAISS index are both committed intentionally — the index because it keeps setup to one `pip install` + `python build_index.py` is optional.
+
+## Rebranding state (not yet complete)
+
+The frontend rebrand to **Samvad** is done (title tag, hero, favicon, landing page). The backend prompts and surface strings still reference the old **"Gita Study Assistant"** name in:
+- `rag.py` — `SYSTEM_PROMPT` and `DIRECT_SYSTEM_PROMPT` both open with "You are the Gita Study Assistant."
+- `api.py` — `FastAPI(title="Gita Study Assistant API")`
+- `app.py` — Streamlit `page_title` + module docstring
+- `eval.py` — docstring/CLI headers
+- `README.md` — all references
+
+Future work: swap these to "Samvad" (or keep the Gita-specific phrasing in the Gita-specific system prompts and only rename the framing docstrings/titles — a judgment call worth asking about).
